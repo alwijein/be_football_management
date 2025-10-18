@@ -721,65 +721,6 @@ be_football/
 
 ---
 
-##  Contributing
-
-Kontribusi sangat diterima! Mohon ikuti panduan berikut:
-
-### Cara Berkontribusi
-
-1. **Fork repository**
-2. **Buat feature branch**
-   ```bash
-   git checkout -b feature/amazing-feature
-   ```
-3. **Commit perubahan Anda**
-   ```bash
-   git commit -m 'Add some amazing feature'
-   ```
-4. **Push ke branch**
-   ```bash
-   git push origin feature/amazing-feature
-   ```
-5. **Buka Pull Request**
-
-### Standar Coding
-
-- Ikuti best practice dan konvensi Go
-- Gunakan `gofmt` untuk format kode
-- Tambahkan komentar untuk fungsi yang di-export
-- Tulis unit test untuk fitur baru
-- Update dokumentasi jika diperlukan
-
-### Format Commit Message
-
-```
-type(scope): subject
-
-body
-
-footer
-```
-
-**Types:**
-- `feat`: Fitur baru
-- `fix`: Perbaikan bug
-- `docs`: Perubahan dokumentasi
-- `style`: Perubahan style kode (formatting)
-- `refactor`: Refactoring kode
-- `test`: Menambahkan test
-- `chore`: Tugas maintenance
-
-**Example:**
-```
-feat(auth): tambahkan endpoint refresh token
-
-Implementasi fungsi refresh token untuk memungkinkan
-user mendapatkan access token baru tanpa login ulang.
-
-Closes #123
-```
-
----
 
 ## 📄 License
 
@@ -819,13 +760,6 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
 
 ## 📞 Dukungan & Kontak
 
-### Menemukan Bug?
-
-Please [buka issue](https://github.com/alwijein/be_football/issues) with:
-- Deskripsi bug
-- Langkah-langkah untuk mereproduksi
-- Perilaku yang diharapkan vs aktual
-- Screenshot (jika ada)
 
 ### Butuh Bantuan?
 
@@ -833,37 +767,6 @@ Please [buka issue](https://github.com/alwijein/be_football/issues) with:
 - 💬 Buka [diskusi](https://github.com/alwijein/be_football/diskusis)
 - 📧 Contact: [your-email@example.com](mailto:your-email@example.com)
 
-### Permintaan Fitur
-
-We welcome Permintaan Fitur! Please [buka issue](https://github.com/alwijein/be_football/issues) dengan .`enhancement` .
-
----
-
-## 🗺️ Roadmap
-
-### Versi 1.0.0 (Saat Ini) ✅
-- Fungsi API inti
-- Autentikasi & Authorization
-- Team, Player, Match management
-- Dukungan upload file
-- Dashboard & Laporan
-
-### Versi 1.1.0 (Direncanakan) 🚧
-- [ ] Implementasi refresh token
-- [ ] Verifikasi email
-- [ ] Fungsi reset password
-- [ ] Pencarian dan filter yang ditingkatkan
-- [ ] Export laporan ke PDF/Excel
-
-### Versi 2.0.0 (Masa Depan) 🔮
-- [ ] Update pertandingan real-time (WebSocket)
-- [ ] Interface web dashboard admin
-- [ ] Dukungan multi-bahasa
-- [ ] Analitik dan statistik lanjutan
-- [ ] Integrasi aplikasi mobile
-- [ ] Integrasi media sosial
-
----
 
 ## 📊 Status Project
 
