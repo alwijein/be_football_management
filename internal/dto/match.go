@@ -6,7 +6,7 @@ import "time"
 type CreateMatchRequest struct {
 	HomeTeamID uint   `json:"home_team_id" binding:"required"`
 	AwayTeamID uint   `json:"away_team_id" binding:"required"`
-	MatchDate  string `json:"match_date" binding:"required"` // Format: YYYY-MM-DD
+	MatchDate  string `json:"match_date" binding:"required"`       // Format: YYYY-MM-DD
 	MatchTime  string `json:"match_time" binding:"required,len=5"` // Format: HH:MM
 }
 
@@ -20,8 +20,9 @@ type UpdateMatchRequest struct {
 
 // MatchResultRequest represents match result request
 type MatchResultRequest struct {
-	HomeScore int `json:"home_score" binding:"required,min=0"`
-	AwayScore int `json:"away_score" binding:"required,min=0"`
+	HomeScore *int   `json:"home_score" binding:"required,min=0"`
+	AwayScore *int   `json:"away_score" binding:"required,min=0"`
+	Status    string `json:"status" binding:"omitempty,oneof=Scheduled Ongoing Completed Cancelled"`
 }
 
 // MatchResponse represents match response

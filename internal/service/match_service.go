@@ -209,9 +209,15 @@ func (s *matchService) SetResult(matchID uint, req *dto.MatchResultRequest) (*do
 		return nil, err
 	}
 
-	match.HomeScore = &req.HomeScore
-	match.AwayScore = &req.AwayScore
-	match.Status = domain.StatusCompleted
+	match.HomeScore = req.HomeScore
+	match.AwayScore = req.AwayScore
+
+	// Set status if provided, otherwise default to Completed
+	if req.Status != "" {
+		match.Status = domain.MatchStatus(req.Status)
+	} else {
+		match.Status = domain.StatusCompleted
+	}
 
 	if err := s.matchRepo.Update(match); err != nil {
 		return nil, err
