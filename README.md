@@ -7,268 +7,279 @@
 ![MySQL](https://img.shields.io/badge/MySQL-8.0+-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
-**A comprehensive REST API for managing football teams, players, matches, and statistics**
+**REST API Lengkap untuk Manajemen Tim Sepak Bola, Pemain, Pertandingan, dan Statistik**
 
-Built with Go, Gin Framework, and Clean Architecture principles
+Dibangun dengan Go, Gin Framework, dan Clean Architecture
 
-[Features](#-features) • [Installation](#-installation) • [API Documentation](#-api-documentation) • [Usage](#-usage) • [Contributing](#-contributing)
+---
+
+### 🚀 Postman Collection - Import Sekarang!
+
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://elements.getpostman.com/redirect?entityId=24630549-226d5eed-7d4a-49df-a1d4-dc518a7de6ba&entityType=collection)
+
+**Link Collection:**
+```
+https://elements.getpostman.com/redirect?entityId=24630549-226d5eed-7d4a-49df-a1d4-dc518a7de6ba&entityType=collection
+```
+
+> 💡 **Tip:** Klik tombol di atas atau copy link untuk import collection ke Postman. Token akan otomatis tersimpan setelah login!
+
+---
+
+[Fitur](#-fitur) • [Instalasi](#-instalasi) • [Dokumentasi API](#-dokumentasi-api) • [Struktur Project](#-struktur-project)
 
 </div>
 
 ---
 
-## 📋 Table of Contents
+## 📋 Daftar Isi
 
-- [Overview](#-overview)
-- [Features](#-features)
+- [Tentang Project](#-tentang-project)
+- [Fitur Utama](#-fitur-utama)
 - [Tech Stack](#-tech-stack)
-- [Architecture](#-architecture)
-- [Prerequisites](#-prerequisites)
-- [Installation](#-installation)
-- [Configuration](#-configuration)
-- [Running the Application](#-running-the-application)
-- [API Documentation](#-api-documentation)
+- [Arsitektur](#-arsitektur)
+- [Prasyarat](#-prasyarat)
+- [Instalasi](#-instalasi)
+- [Konfigurasi](#-konfigurasi)
+- [Menjalankan Aplikasi](#-menjalankan-aplikasi)
+- [Dokumentasi API](#-dokumentasi-api)
 - [Database Schema](#-database-schema)
-- [Project Structure](#-project-structure)
-- [Testing](#-testing)
-- [Deployment](#-deployment)
-- [Contributing](#-contributing)
-- [License](#-license)
+- [Struktur Project](#-struktur-project)
+- [Lisensi](#-lisensi)
 
 ---
 
-## 🎯 Overview
+## 🎯 Tentang Project
 
-**Football Management API** is a robust and scalable REST API designed to manage football organizations, including teams, players, matches, schedules, and comprehensive statistics. Built with modern Go practices and Clean Architecture, this API provides a solid foundation for football management applications.
+**Football Management API** adalah REST API yang robust dan scalable untuk mengelola organisasi sepak bola, termasuk tim, pemain, pertandingan, jadwal, dan statistik lengkap. Dibangun dengan praktik modern Go dan Clean Architecture, API ini menyediakan fondasi yang solid untuk aplikasi manajemen sepak bola.
 
-### Key Highlights
+### Keunggulan Utama
 
-- 🏗️ **Clean Architecture** - Separation of concerns with clear domain boundaries
-- 🔐 **Secure Authentication** - JWT-based auth with bcrypt password hashing
-- 📁 **File Upload Support** - Handle team logos and player profile photos
-- 📊 **Rich Statistics** - Dashboard metrics and detailed match reports
-- ✅ **Input Validation** - Comprehensive request validation with detailed error messages
-- 🚀 **High Performance** - Built on Gin framework for optimal speed
-- 📖 **Well Documented** - Complete API documentation with examples
+- 🏗️ **Clean Architecture** - Pemisahan concern dengan batasan domain yang jelas
+- 🔐 **Autentikasi Aman** - JWT-based auth dengan bcrypt password hashing
+- 📁 **Upload File** - Support upload logo tim dan foto profil pemain
+- 📊 **Statistik Lengkap** - Metrik dashboard dan laporan pertandingan detail
+- ✅ **Validasi Input** - Validasi request komprehensif dengan pesan error detail
+- 🚀 **Performa Tinggi** - Dibangun dengan Gin framework untuk kecepatan optimal
+- 📖 **Dokumentasi Lengkap** - Dokumentasi API lengkap dengan contoh
 
 ---
 
-## ✨ Features
+## ✨ Fitur Utama
 
-### 🔐 Authentication & Authorization
-- User registration and login with JWT tokens
-- Password encryption using bcrypt
-- Profile management with photo upload
-- Token-based API protection
+### 🔐 Autentikasi & Otorisasi
+- Registrasi dan login user dengan JWT token
+- Enkripsi password menggunakan bcrypt
+- Manajemen profil dengan upload foto
+- Proteksi API berbasis token
 
-### ⚽ Team Management
-- Complete CRUD operations for teams
-- Team logo upload and management (JPG, PNG, GIF, WebP)
-- Team statistics and performance metrics
-- Soft delete support
+### ⚽ Manajemen Tim
+- Operasi CRUD lengkap untuk tim
+- Upload dan manajemen logo tim (JPG, PNG, GIF, WebP)
+- Statistik dan metrik performa tim
+- Support soft delete
 
-### 👥 Player Management
-- Player CRUD with team association
-- Player profile photo uploads
-- Position-based categorization (Forward, Midfielder, Defender, Goalkeeper)
-- Jersey number validation (unique per team)
-- Physical attributes (height, weight)
+### 👥 Manajemen Pemain
+- CRUD pemain dengan asosiasi tim
+- Upload foto profil pemain
+- Kategorisasi berdasarkan posisi (Penyerang, Gelandang, Bertahan, Penjaga Gawang)
+- Validasi nomor punggung (unik per tim)
+- Atribut fisik (tinggi, berat)
 
-### 📅 Match & Schedule Management
-- Match scheduling with date/time/venue
-- Live score updates
-- Match result management
-- Filter matches by date (today, upcoming, past)
+### 📅 Manajemen Pertandingan & Jadwal
+- Penjadwalan pertandingan dengan tanggal/waktu/venue
+- Update skor live
+- Manajemen hasil pertandingan
+- Filter pertandingan berdasarkan tanggal (hari ini, mendatang, lampau)
 
-### ⚽ Goal & Scorer Tracking
-- Record goals with player attribution
-- Goal timing and match association
-- Scorer statistics
+### ⚽ Pencatatan Gol & Pencetak Gol
+- Catat gol dengan atribusi pemain
+- Waktu gol dan asosiasi pertandingan
+- Statistik pencetak gol
 
-### 📊 Reports & Statistics
-- Dashboard overview (total teams, players, matches, goals)
-- Team-specific match reports
-- Today's match listings
-- Comprehensive match details with teams and goals
+### 📊 Laporan & Statistik
+- Overview dashboard (total tim, pemain, pertandingan, gol)
+- Laporan pertandingan spesifik tim
+- Daftar pertandingan hari ini
+- Detail pertandingan lengkap dengan tim dan gol
 
 ---
 
 ## 🚀 Tech Stack
 
-| Technology | Version | Purpose |
-|------------|---------|---------|
-| **Go** | 1.24+ | Programming Language |
+| Teknologi | Versi | Kegunaan |
+|-----------|-------|----------|
+| **Go** | 1.24+ | Bahasa Pemrograman |
 | **Gin** | 1.10.0 | HTTP Web Framework |
-| **GORM** | 1.31.0 | ORM for Database Operations |
+| **GORM** | 1.31.0 | ORM untuk Operasi Database |
 | **MySQL** | 8.0+ | Relational Database |
-| **JWT** | 5.2.1 | Authentication & Authorization |
+| **JWT** | 5.2.1 | Autentikasi & Otorisasi |
 | **Bcrypt** | - | Password Hashing |
 | **UUID** | 1.6.0 | Unique File Naming |
 | **Validator** | 10.22.1 | Request Validation |
 | **CORS** | 1.7.2 | Cross-Origin Resource Sharing |
-
 ---
 
-## 🏛️ Architecture
+## 🏛️ Arsitektur
 
-This project follows **Clean Architecture** principles with clear separation of concerns:
+Project ini mengikuti prinsip **Clean Architecture** dengan pemisahan concern yang jelas:
 
 ```
 ┌─────────────────────────────────────────────────────────┐
-│                     HTTP Layer (Gin)                     │
-│                  Routes & Middleware                     │
+│                   HTTP Layer (Gin)                       │
+│                Routes & Middleware                       │
 └────────────────────┬────────────────────────────────────┘
                      │
 ┌────────────────────▼────────────────────────────────────┐
-│                   Handler Layer                          │
-│        (HTTP Request/Response, Validation)               │
+│                  Handler Layer                           │
+│         (HTTP Request/Response, Validation)              │
 └────────────────────┬────────────────────────────────────┘
                      │
 ┌────────────────────▼────────────────────────────────────┐
-│                   Service Layer                          │
+│                  Service Layer                           │
 │            (Business Logic, Use Cases)                   │
 └────────────────────┬────────────────────────────────────┘
                      │
 ┌────────────────────▼────────────────────────────────────┐
-│                  Repository Layer                        │
-│             (Database Operations, GORM)                  │
+│                 Repository Layer                         │
+│            (Database Operations, GORM)                   │
 └────────────────────┬────────────────────────────────────┘
                      │
 ┌────────────────────▼────────────────────────────────────┐
-│                   Domain Layer                           │
-│          (Entities, Business Rules, DTOs)                │
+│                  Domain Layer                            │
+│         (Entities, Business Rules, DTOs)                 │
 └─────────────────────────────────────────────────────────┘
 ```
 
-**Benefits:**
-- ✅ Testability - Each layer can be tested independently
-- ✅ Maintainability - Changes in one layer don't affect others
-- ✅ Scalability - Easy to extend with new features
-- ✅ Flexibility - Swap implementations without affecting business logic
+**Keuntungan:**
+- ✅ **Testability** - Setiap layer bisa ditest secara independen
+- ✅ **Maintainability** - Perubahan di satu layer tidak mempengaruhi yang lain
+- ✅ **Scalability** - Mudah diperluas dengan fitur baru
+- ✅ **Flexibility** - Bisa mengganti implementasi tanpa mempengaruhi business logic
 
 ---
 
-## 📦 Prerequisites
+## 📦 Prasyarat
 
-Before installing, ensure you have the following installed on your system:
+Sebelum instalasi, pastikan Anda sudah menginstall:
 
-### Required
+### Wajib
 
-- **Go** (version 1.24 or higher)
+- **Go** (versi 1.24 atau lebih tinggi)
   ```bash
-  # Check Go version
+  # Cek versi Go
   go version
   ```
   Download: [https://golang.org/dl/](https://golang.org/dl/)
 
-- **MySQL** (version 8.0 or higher)
+- **MySQL** (versi 8.0 atau lebih tinggi)
   ```bash
-  # Check MySQL version
+  # Cek versi MySQL
   mysql --version
   ```
   Download: [https://dev.mysql.com/downloads/mysql/](https://dev.mysql.com/downloads/mysql/)
 
 - **Git**
   ```bash
-  # Check Git version
+  # Cek versi Git
   git --version
   ```
   Download: [https://git-scm.com/downloads](https://git-scm.com/downloads)
 
-### Optional but Recommended
+### Opsional (Disarankan)
 
-- **Postman** or **Insomnia** - For API testing
-- **MySQL Workbench** - For database management
-- **VS Code** with Go extension - For development
+- **Postman** - Untuk testing API
+- **MySQL Workbench** - Untuk manajemen database
+- **VS Code** dengan Go extension - Untuk development
 
 ---
 
-## 🔧 Installation
+## 🔧 Instalasi
 
-### 1. Clone the Repository
+### 1. Clone Repository
 
 ```bash
 # Clone via HTTPS
-git clone https://github.com/alwijein/be_football.git
+git clone https://github.com/alwijein/be_football_management.git
 
-# OR clone via SSH
-git clone git@github.com:alwijein/be_football.git
+# Atau via SSH
+git clone git@github.com:alwijein/be_football_management.git
 
-# Navigate to project directory
-cd be_football
+# Masuk ke direktori project
+cd be_football_management
 ```
 
 ### 2. Install Dependencies
 
 ```bash
-# Download and install all Go dependencies
+# Download dan install semua dependensi Go
 go mod download
 
-# Verify dependencies
+# Verifikasi dependencies
 go mod verify
 
-# Tidy up go.mod and go.sum (optional)
+# Rapihkan go.mod dan go.sum (opsional)
 go mod tidy
 ```
 
-### 3. Create Database
+### 3. Buat Database
 
 ```bash
-# Login to MySQL
+# Login ke MySQL
 mysql -u root -p
 
-# Create database
+# Buat database
 CREATE DATABASE football_db;
 
-# Exit MySQL
+# Keluar dari MySQL
 exit;
 ```
 
-**Alternative using MySQL Workbench:**
-1. Open MySQL Workbench
-2. Connect to your MySQL server
-3. Execute: `CREATE DATABASE football_db;`
+**Alternatif menggunakan MySQL Workbench:**
+1. Buka MySQL Workbench
+2. Connect ke MySQL server Anda
+3. Eksekusi: `CREATE DATABASE football_db;`
 
-### 4. Configure Environment Variables
+### 4. Konfigurasi Environment Variables
 
 ```bash
-# Copy example environment file
+# Copy file environment example
 cp .env.example .env
 
-# Edit .env file with your configuration
-# (Use nano, vim, or any text editor)
+# Edit file .env dengan konfigurasi Anda
+# (Gunakan nano, vim, atau text editor apapun)
 nano .env
 ```
 
-**Configuration Options:**
+**Opsi Konfigurasi:**
 
 ```env
-# Database Configuration
+# Konfigurasi Database
 DB_HOST=localhost
 DB_PORT=3306
 DB_USER=root
-DB_PASSWORD=your_mysql_password
+DB_PASSWORD=password_mysql_anda
 DB_NAME=football_db
 
-# Server Configuration
+# Konfigurasi Server
 SERVER_PORT=8080
 GIN_MODE=debug
 
-# JWT Configuration
+# Konfigurasi JWT
 JWT_SECRET=your-very-secret-key-please-change-in-production-12345
 JWT_EXPIRATION_HOURS=24
 
-# Application
+# Aplikasi
 APP_NAME=Football Management API
 APP_VERSION=1.0.0
 ```
 
-⚠️ **Important:** Change `JWT_SECRET` in production environment!
+⚠️ **Penting:** Ganti `JWT_SECRET` di environment production!
 
-### 5. Create Upload Directories
+### 5. Buat Direktori Upload
 
 ```bash
-# Create directories for file uploads
+# Buat direktori untuk file uploads
 mkdir -p uploads/teams
 mkdir -p uploads/players
 mkdir -p uploads/profiles
@@ -283,30 +294,30 @@ New-Item -ItemType Directory -Force -Path uploads/profiles
 
 ---
 
-## 🔧 Configuration
+## ⚙️ Konfigurasi
 
-### Database Configuration
+### Konfigurasi Database
 
-Edit `.env` file to match your MySQL setup:
+Edit file `.env` sesuai dengan setup MySQL Anda:
 
 ```env
-DB_HOST=localhost          # MySQL host (use 'localhost' for local)
+DB_HOST=localhost          # MySQL host (gunakan 'localhost' untuk lokal)
 DB_PORT=3306              # MySQL port (default: 3306)
-DB_USER=root              # Your MySQL username
-DB_PASSWORD=              # Your MySQL password (leave empty if no password)
-DB_NAME=football_db       # Database name
+DB_USER=root              # Username MySQL Anda
+DB_PASSWORD=              # Password MySQL Anda (kosongkan jika tidak ada password)
+DB_NAME=football_db       # Nama database
 ```
 
-### Server Configuration
+### Konfigurasi Server
 
 ```env
-SERVER_PORT=8080          # Port where API will run
-GIN_MODE=debug           # Options: debug, release, test
+SERVER_PORT=8080          # Port dimana API akan berjalan
+GIN_MODE=debug           # Opsi: debug, release, test
 ```
 
-- **debug**: Development mode with detailed logs
-- **release**: Production mode with optimized performance
-- **test**: Testing mode
+- **debug**: Mode development dengan log detail
+- **release**: Mode production dengan performa optimal
+- **test**: Mode testing
 
 ### JWT Configuration
 
