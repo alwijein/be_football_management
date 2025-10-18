@@ -56,7 +56,7 @@ https://elements.getpostman.com/redirect?entityId=24630549-226d5eed-7d4a-49df-a1
 ### Keunggulan Utama
 
 - 🏗️ **Clean Architecture** - Pemisahan concern dengan batasan domain yang jelas
-- 🔐 **Autentikasi Aman** - JWT-based auth dengan bcrypt password hashing
+- 🔐 **Autentikasi Aman** - JWT-based auth dengan Hashing password Bcrypt
 - 📁 **Upload File** - Support upload logo tim dan foto profil pemain
 - 📊 **Statistik Lengkap** - Metrik dashboard dan laporan pertandingan detail
 - ✅ **Validasi Input** - Validasi request komprehensif dengan pesan error detail
@@ -326,23 +326,23 @@ JWT_SECRET=your-secret-key-min-32-characters-long-for-security
 JWT_EXPIRATION_HOURS=24
 ```
 
-⚠️ **Security Best Practices:**
-- Use a strong, random secret key (minimum 32 characters)
-- Never commit `.env` to version control
-- Use different secrets for different environments
-- Rotate secrets periodically
+⚠️ **Best Practice Keamanan:**
+- Gunakan secret key yang kuat dan random (minimal 32 karakter)
+- Jangan commit `.env` ke version control
+- Gunakan secret yang berbeda untuk environment berbeda
+- Rotasi secret secara berkala
 
 ---
 
-## � Running the Application
+## � Menjalankan Aplikasi
 
-### Development Mode
+### Mode Development
 
 ```bash
-# Build the application
+# Build aplikasi
 go build -o bin/main.exe cmd/api/main.go
 
-# Run the application
+# Jalankan aplikasi
 ./bin/main.exe
 ```
 
@@ -355,39 +355,39 @@ go build -o .\bin\main.exe .\cmd\api\main.go
 .\bin\main.exe
 ```
 
-### Using Go Run (Quick Development)
+### Menggunakan Go Run (Quick Development)
 
 ```bash
-# Run directly without building
+# Jalankan langsung tanpa build
 go run cmd/api/main.go
 ```
 
-### Production Mode
+### Mode Production
 
 ```bash
-# Set production mode in .env
+# Set Mode Production in .env
 GIN_MODE=release
 
-# Build optimized binary
+# Build binary yang optimal
 go build -ldflags="-s -w" -o bin/main cmd/api/main.go
 
 # Run
 ./bin/main
 ```
 
-### Verify Server is Running
+### Verifikasi Server Berjalan
 
 ```bash
 # Test health endpoint
 curl http://localhost:8080/api/health
 
-# Expected response:
+# Response yang diharapkan:
 # {"meta":{"code":200,"status":"success","message":"OK"},"data":{"status":"healthy"}}
 ```
 
-### Server Information
+### Informasi Server
 
-Once running, the server will be available at:
+Setelah berjalan, server akan tersedia di:
 
 - **Local**: `http://localhost:8080`
 - **Network**: `http://YOUR_LOCAL_IP:8080` (e.g., `http://192.168.1.100:8080`)
@@ -396,7 +396,7 @@ Once running, the server will be available at:
 
 ---
 
-## 📖 API Documentation
+## 📖 Dokumentasi API
 
 ### Base URL
 
@@ -404,17 +404,17 @@ Once running, the server will be available at:
 http://localhost:8080/api
 ```
 
-### Authentication
+### Autentikasi
 
-Most endpoints require JWT authentication. Include the token in the Authorization header:
+Most endpoints require JWT Autentikasi. Include the token in the Authorization header:
 
 ```
 Authorization: Bearer YOUR_JWT_TOKEN
 ```
 
-### Response Format
+### Format Response
 
-All API responses follow this standard format:
+Semua response API mengikuti format standar ini:
 
 **Success Response:**
 ```json
@@ -425,7 +425,7 @@ All API responses follow this standard format:
     "message": "Operation successful"
   },
   "data": {
-    // Response data here
+    // Data response di sini
   }
 }
 ```
@@ -436,15 +436,15 @@ All API responses follow this standard format:
   "meta": {
     "code": 400,
     "status": "error",
-    "message": "Error description"
+    "message": "Deskripsi error"
   },
   "data": null
 }
 ```
 
-### Quick Reference
+### Referensi Cepat
 
-| Category | Endpoint | Method | Auth Required |
+| Kategori | Endpoint | Method | Perlu Auth |
 |----------|----------|--------|---------------|
 | **Auth** | `/login` | POST | ❌ |
 | | `/register` | POST | ❌ |
@@ -466,11 +466,11 @@ All API responses follow this standard format:
 | **Goals** | `/goals` | POST | ✅ |
 | | `/goals/:id` | DELETE | ✅ |
 
-### Complete Documentation
+### Dokumentasi Lengkap
 
-For detailed API documentation with request/response examples, see:
-- 📄 **[API_DOCUMENTATION.md](./API_DOCUMENTATION.md)** - Complete endpoint documentation
-- 📄 **[API_QUICK_REFERENCE.md](./API_QUICK_REFERENCE.md)** - Quick reference guide
+For detailed Dokumentasi API with request/response examples, see:
+- 📄 **[API_DOCUMENTATION.md](./API_DOCUMENTATION.md)** - Dokumentasi endpoint lengkap
+- 📄 **[API_QUICK_REFERENCE.md](./API_QUICK_REFERENCE.md)** - Referensi Cepat guide
 
 ### Postman Collection
 
@@ -478,17 +478,17 @@ For detailed API documentation with request/response examples, see:
 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://elements.getpostman.com/redirect?entityId=24630549-226d5eed-7d4a-49df-a1d4-dc518a7de6ba&entityType=collection)
 
-**Or manually import:**
+**Atau import manual:**
 
-1. Open Postman
-2. Click **Import**
-3. Paste this URL: `https://elements.getpostman.com/redirect?entityId=24630549-226d5eed-7d4a-49df-a1d4-dc518a7de6ba&entityType=collection`
-4. Click **Import**
+1. Buka Postman
+2. Klik **Import**
+3. Paste URL ini: `https://elements.getpostman.com/redirect?entityId=24630549-226d5eed-7d4a-49df-a1d4-dc518a7de6ba&entityType=collection`
+4. Klik **Import**
 5. Set environment variables:
    - `base_url`: `http://localhost:8080/api`
-   - `token`: Your JWT token after login
+   - `token`: JWT token Anda setelah login
 
-> 💡 **Tip:** Token will be automatically saved after successful login!
+> 💡 **Tip:** Token akan otomatis tersimpan setelah login berhasil!
 
 ---
 
@@ -530,9 +530,9 @@ For detailed API documentation with request/response examples, see:
                         └───────────┘
 ```
 
-### Database Tables
+### Tabel Database
 
-**Users Table:**
+**Tabel Users:**
 ```sql
 CREATE TABLE users (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
@@ -547,7 +547,7 @@ CREATE TABLE users (
 );
 ```
 
-**Teams Table:**
+**Tabel Teams:**
 ```sql
 CREATE TABLE teams (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
@@ -561,7 +561,7 @@ CREATE TABLE teams (
 );
 ```
 
-**Players Table:**
+**Tabel Players:**
 ```sql
 CREATE TABLE players (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
@@ -579,7 +579,7 @@ CREATE TABLE players (
 );
 ```
 
-**Matches Table:**
+**Tabel Matches:**
 ```sql
 CREATE TABLE matches (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
@@ -598,7 +598,7 @@ CREATE TABLE matches (
 );
 ```
 
-**Goals Table:**
+**Tabel Goals:**
 ```sql
 CREATE TABLE goals (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
@@ -612,284 +612,145 @@ CREATE TABLE goals (
 ```
 
 **Auto Migration:**
-The application automatically creates and migrates these tables on startup using GORM.
+Aplikasi secara otomatis membuat dan migrasi tabel-tabel ini saat startup menggunakan GORM.
 
 ---
 
-## � Project Structure
+## � Struktur Project
 
 ```
 be_football/
 │
 ├── cmd/
 │   └── api/
-│       └── main.go                    # Application entry point & server initialization
+│       └── main.go                    # Entry point aplikasi & inisialisasi server
 │
 ├── internal/
 │   ├── config/
-│   │   └── config.go                  # Environment configuration loader
+│   │   └── config.go                  # Loader konfigurasi environment
 │   │
-│   ├── domain/                        # Domain entities (Business models)
-│   │   ├── user.go                    # User entity
-│   │   ├── team.go                    # Team entity
-│   │   ├── player.go                  # Player entity with position enum
-│   │   ├── match.go                   # Match/Schedule entity
-│   │   └── goal.go                    # Goal entity
+│   ├── domain/                        # Entity domain (Model bisnis)
+│   │   ├── user.go                    # Entity User
+│   │   ├── team.go                    # Entity Team
+│   │   ├── player.go                  # Entity Player dengan enum posisi
+│   │   ├── match.go                   # Entity Match/Schedule
+│   │   └── goal.go                    # Entity Goal
 │   │
 │   ├── dto/                           # Data Transfer Objects
-│   │   ├── auth.go                    # Login, Register, Profile DTOs
-│   │   ├── team.go                    # Team request/response DTOs
-│   │   ├── player.go                  # Player request/response DTOs
-│   │   ├── match.go                   # Match/Schedule DTOs
-│   │   ├── goal.go                    # Goal DTOs
-│   │   └── response.go                # Standard response wrappers
+│   │   ├── auth.go                    # DTO Login, Register, Profile
+│   │   ├── team.go                    # DTO request/response Team
+│   │   ├── player.go                  # DTO request/response Player
+│   │   ├── match.go                   # DTO Match/Schedule
+│   │   ├── goal.go                    # DTO Goal
+│   │   └── response.go                # Wrapper response standar
 │   │
-│   ├── repository/                    # Data Access Layer
-│   │   ├── user_repository.go         # User CRUD operations
-│   │   ├── team_repository.go         # Team CRUD operations
-│   │   ├── player_repository.go       # Player CRUD operations
-│   │   ├── match_repository.go        # Match CRUD operations
-│   │   └── goal_repository.go         # Goal CRUD operations
+│   ├── repository/                    # Layer Akses Data
+│   │   ├── user_repository.go         # Operasi CRUD User
+│   │   ├── team_repository.go         # Operasi CRUD Team
+│   │   ├── player_repository.go       # Operasi CRUD Player
+│   │   ├── match_repository.go        # Operasi CRUD Match
+│   │   └── goal_repository.go         # Operasi CRUD Goal
 │   │
-│   ├── service/                       # Business Logic Layer
-│   │   ├── auth_service.go            # Authentication logic
-│   │   ├── team_service.go            # Team business logic
-│   │   ├── player_service.go          # Player business logic
-│   │   ├── match_service.go           # Match business logic
-│   │   ├── goal_service.go            # Goal business logic
-│   │   └── report_service.go          # Dashboard & reports logic
+│   ├── service/                       # Layer Logika Bisnis
+│   │   ├── auth_service.go            # Autentikasi logic
+│   │   ├── team_service.go            # Logika bisnis Team
+│   │   ├── player_service.go          # Logika bisnis Player
+│   │   ├── match_service.go           # Logika bisnis Match
+│   │   ├── goal_service.go            # Logika bisnis Goal
+│   │   └── report_service.go          # Logika dashboard & laporan
 │   │
 │   ├── handler/                       # HTTP Handlers (Controllers)
-│   │   ├── auth_handler.go            # Auth endpoints
-│   │   ├── team_handler.go            # Team endpoints
-│   │   ├── player_handler.go          # Player endpoints
-│   │   ├── match_handler.go           # Match/Schedule endpoints
-│   │   ├── goal_handler.go            # Goal endpoints
-│   │   └── report_handler.go          # Dashboard & report endpoints
+│   │   ├── auth_handler.go            # Endpoint Auth
+│   │   ├── team_handler.go            # Endpoint Team
+│   │   ├── player_handler.go          # Endpoint Player
+│   │   ├── match_handler.go           # Endpoint Match/Schedule
+│   │   ├── goal_handler.go            # Endpoint Goal
+│   │   └── report_handler.go          # Endpoint dashboard & laporan
 │   │
 │   ├── middleware/                    # HTTP Middleware
-│   │   ├── auth_middleware.go         # JWT authentication
-│   │   ├── cors_middleware.go         # CORS configuration
-│   │   └── logger_middleware.go       # Request logging
+│   │   ├── auth_middleware.go         # JWT Autentikasi
+│   │   ├── cors_middleware.go         # Konfigurasi CORS
+│   │   └── logger_middleware.go       # Logging request
 │   │
 │   ├── routes/
-│   │   └── routes.go                  # Route definitions & grouping
+│   │   └── routes.go                  # Definisi & grouping route
 │   │
-│   └── utils/                         # Utility functions
-│       ├── jwt.go                     # JWT token generation & validation
-│       ├── password.go                # Bcrypt password hashing
-│       ├── response.go                # Standard response helpers
-│       ├── file_upload.go             # File upload utilities
-│       └── validation.go              # Custom validators
+│   └── utils/                         # Fungsi utilitas
+│       ├── jwt.go                     # Generasi & validasi JWT token
+│       ├── password.go                # Hashing password Bcrypt
+│       ├── response.go                # Helper response standar
+│       ├── file_upload.go             # Utilitas upload file
+│       └── validation.go              # Validator kustom
 │
 ├── pkg/
 │   └── database/
-│       └── mysql.go                   # Database connection & auto-migration
+│       └── mysql.go                   # Koneksi database & auto-migration
 │
-├── uploads/                           # File uploads directory
-│   ├── teams/                         # Team logos
-│   ├── players/                       # Player photos
-│   └── profiles/                      # User profile photos
+├── uploads/                           # Direktori file uploads
+│   ├── teams/                         # Logo tim
+│   ├── players/                       # Foto pemain
+│   └── profiles/                      # Foto profil user
 │
-├── bin/                               # Compiled binaries
+├── bin/                               # Binary yang dikompilasi
 │
 ├── .env                               # Environment variables (DO NOT COMMIT)
-├── .env.example                       # Environment variables template
-├── .gitignore                         # Git ignore rules
-├── go.mod                             # Go module dependencies
-├── go.sum                             # Dependency checksums
-├── README.md                          # This file
-├── API_DOCUMENTATION.md               # Complete API documentation
-├── API_QUICK_REFERENCE.md             # Quick API reference
-└── LICENSE                            # Project license
+├── .env.example                       # Template variabel environment
+├── .gitignore                         # Aturan git ignore
+├── go.mod                             # Dependensi Go module
+├── go.sum                             # Checksum dependensi
+├── README.md                          # File ini
+├── API_DOCUMENTATION.md               # Complete Dokumentasi API
+├── API_QUICK_REFERENCE.md             # Referensi API cepat
+└── LICENSE                            # Lisensi project
 ```
 
-### Key Directories Explained
+### Penjelasan Direktori Utama
 
-- **`cmd/api/`**: Application entry point
-- **`internal/`**: Private application code (not importable by other projects)
-- **`internal/domain/`**: Core business entities and models
-- **`internal/dto/`**: Data structures for API requests/responses
-- **`internal/repository/`**: Database operations (GORM)
-- **`internal/service/`**: Business logic and use cases
-- **`internal/handler/`**: HTTP request handlers
-- **`internal/middleware/`**: HTTP middleware (auth, CORS, logging)
-- **`internal/routes/`**: API route definitions
-- **`internal/utils/`**: Reusable utility functions
-- **`pkg/`**: Public libraries (can be imported by other projects)
-- **`uploads/`**: File storage for user uploads
+- **`cmd/api/`**: Entry point aplikasi
+- **`internal/`**: Kode aplikasi private (tidak bisa diimport project lain)
+- **`internal/domain/`**: Entity bisnis inti dan model
+- **`internal/dto/`**: Struktur data untuk request/response API
+- **`internal/repository/`**: Operasi database (GORM)
+- **`internal/service/`**: Logika bisnis dan use case
+- **`internal/handler/`**: Handler request HTTP
+- **`internal/middleware/`**: Middleware HTTP (auth, CORS, logging)
+- **`internal/routes/`**: Definisi route API
+- **`internal/utils/`**: Reusable Fungsi utilitas
+- **`pkg/`**: Library publik (bisa diimport project lain)
+- **`uploads/`**: Penyimpanan file untuk upload user
 
 ---
 
-## 🧪 Testing
+##  Contributing
 
-### Manual Testing with cURL
+Kontribusi sangat diterima! Mohon ikuti panduan berikut:
 
-**1. Login:**
-```bash
-curl -X POST http://localhost:8080/api/login \
-  -H "Content-Type: application/json" \
-  -d '{"username":"admin","password":"admin123"}'
-```
+### Cara Berkontribusi
 
-**2. Get Teams (with authentication):**
-```bash
-curl -X GET http://localhost:8080/api/teams \
-  -H "Authorization: Bearer YOUR_JWT_TOKEN"
-```
-
-**3. Create Team with Logo:**
-```bash
-curl -X POST http://localhost:8080/api/teams \
-  -H "Authorization: Bearer YOUR_JWT_TOKEN" \
-  -F "name=Arsenal FC" \
-  -F "city=London" \
-  -F "established_year=1886" \
-  -F "logo=@/path/to/logo.png"
-```
-
-### Automated Testing
-
-```bash
-# Run all tests
-go test ./...
-
-# Run tests with coverage
-go test -cover ./...
-
-# Run tests in specific package
-go test ./internal/service/...
-
-# Verbose output
-go test -v ./...
-```
-
-### Test Data
-
-For sample data and test scenarios, see:
-- 📄 **SAMPLE_DATA.md** - Sample data for testing
-
----
-
-## 🚀 Deployment
-
-### Docker Deployment (Recommended)
-
-**1. Create Dockerfile:**
-```dockerfile
-FROM golang:1.24-alpine AS builder
-
-WORKDIR /app
-COPY . .
-RUN go mod download
-RUN go build -o main cmd/api/main.go
-
-FROM alpine:latest
-RUN apk --no-cache add ca-certificates
-
-WORKDIR /root/
-COPY --from=builder /app/main .
-COPY --from=builder /app/.env .
-
-RUN mkdir -p uploads/teams uploads/players uploads/profiles
-
-EXPOSE 8080
-CMD ["./main"]
-```
-
-**2. Build and run:**
-```bash
-# Build image
-docker build -t football-api .
-
-# Run container
-docker run -d -p 8080:8080 --name football-api football-api
-```
-
-### Docker Compose (with MySQL)
-
-**docker-compose.yml:**
-```yaml
-version: '3.8'
-
-services:
-  mysql:
-    image: mysql:8.0
-    environment:
-      MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: football_db
-    ports:
-      - "3306:3306"
-    volumes:
-      - mysql_data:/var/lib/mysql
-
-  api:
-    build: .
-    ports:
-      - "8080:8080"
-    depends_on:
-      - mysql
-    environment:
-      DB_HOST: mysql
-      DB_PORT: 3306
-      DB_USER: root
-      DB_PASSWORD: rootpassword
-      DB_NAME: football_db
-
-volumes:
-  mysql_data:
-```
-
-**Run:**
-```bash
-docker-compose up -d
-```
-
-### Production Deployment
-
-**Security Checklist:**
-- ✅ Change `JWT_SECRET` to a strong random key
-- ✅ Set `GIN_MODE=release`
-- ✅ Use environment variables for sensitive data
-- ✅ Enable HTTPS/TLS
-- ✅ Set up database backups
-- ✅ Configure proper CORS policies
-- ✅ Implement rate limiting
-- ✅ Set up monitoring and logging
-- ✅ Use reverse proxy (Nginx/Apache)
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! Please follow these guidelines:
-
-### How to Contribute
-
-1. **Fork the repository**
-2. **Create a feature branch**
+1. **Fork repository**
+2. **Buat feature branch**
    ```bash
    git checkout -b feature/amazing-feature
    ```
-3. **Commit your changes**
+3. **Commit perubahan Anda**
    ```bash
    git commit -m 'Add some amazing feature'
    ```
-4. **Push to the branch**
+4. **Push ke branch**
    ```bash
    git push origin feature/amazing-feature
    ```
-5. **Open a Pull Request**
+5. **Buka Pull Request**
 
-### Coding Standards
+### Standar Coding
 
-- Follow Go best practices and conventions
-- Use `gofmt` to format code
-- Add comments for exported functions
-- Write unit tests for new features
-- Update documentation when needed
+- Ikuti best practice dan konvensi Go
+- Gunakan `gofmt` untuk format kode
+- Tambahkan komentar untuk fungsi yang di-export
+- Tulis unit test untuk fitur baru
+- Update dokumentasi jika diperlukan
 
-### Commit Message Format
+### Format Commit Message
 
 ```
 type(scope): subject
@@ -900,20 +761,20 @@ footer
 ```
 
 **Types:**
-- `feat`: New feature
-- `fix`: Bug fix
-- `docs`: Documentation changes
-- `style`: Code style changes (formatting)
-- `refactor`: Code refactoring
-- `test`: Adding tests
-- `chore`: Maintenance tasks
+- `feat`: Fitur baru
+- `fix`: Perbaikan bug
+- `docs`: Perubahan dokumentasi
+- `style`: Perubahan style kode (formatting)
+- `refactor`: Refactoring kode
+- `test`: Menambahkan test
+- `chore`: Tugas maintenance
 
 **Example:**
 ```
-feat(auth): add refresh token endpoint
+feat(auth): tambahkan endpoint refresh token
 
-Implement refresh token functionality to allow
-users to get new access tokens without re-login.
+Implementasi fungsi refresh token untuk memungkinkan
+user mendapatkan access token baru tanpa login ulang.
 
 Closes #123
 ```
@@ -922,15 +783,15 @@ Closes #123
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+Project ini dilisensikan di bawah MIT License - lihat file [LICENSE](LICENSE) untuk detail.
 
 ```
 MIT License
 
 Copyright (c) 2024 Football Management API
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
+Dengan ini diberikan izin, tanpa biaya, kepada siapapun yang mendapatkan salinan
+dari software ini dan file dokumentasi terkait (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
@@ -946,7 +807,7 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
 
 ---
 
-## 🙏 Acknowledgments
+## 🙏 Penghargaan
 
 - [Gin Web Framework](https://github.com/gin-gonic/gin)
 - [GORM](https://gorm.io/)
@@ -956,55 +817,55 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
 
 ---
 
-## 📞 Support & Contact
+## 📞 Dukungan & Kontak
 
-### Found a Bug?
+### Menemukan Bug?
 
-Please [open an issue](https://github.com/alwijein/be_football/issues) with:
-- Description of the bug
-- Steps to reproduce
-- Expected vs actual behavior
-- Screenshots (if applicable)
+Please [buka issue](https://github.com/alwijein/be_football/issues) with:
+- Deskripsi bug
+- Langkah-langkah untuk mereproduksi
+- Perilaku yang diharapkan vs aktual
+- Screenshot (jika ada)
 
-### Need Help?
+### Butuh Bantuan?
 
-- 📖 Check the [API Documentation](./API_DOCUMENTATION.md)
-- 💬 Open a [discussion](https://github.com/alwijein/be_football/discussions)
+- 📖 Cek [Dokumentasi API](./API_DOCUMENTATION.md)
+- 💬 Buka [diskusi](https://github.com/alwijein/be_football/diskusis)
 - 📧 Contact: [your-email@example.com](mailto:your-email@example.com)
 
-### Feature Requests
+### Permintaan Fitur
 
-We welcome feature requests! Please [open an issue](https://github.com/alwijein/be_football/issues) with the `enhancement` label.
+We welcome Permintaan Fitur! Please [buka issue](https://github.com/alwijein/be_football/issues) dengan .`enhancement` .
 
 ---
 
 ## 🗺️ Roadmap
 
-### Version 1.0.0 (Current) ✅
-- Core API functionality
-- Authentication & Authorization
+### Versi 1.0.0 (Saat Ini) ✅
+- Fungsi API inti
+- Autentikasi & Authorization
 - Team, Player, Match management
-- File upload support
-- Dashboard & Reports
+- Dukungan upload file
+- Dashboard & Laporan
 
-### Version 1.1.0 (Planned) 🚧
-- [ ] Refresh token implementation
-- [ ] Email verification
-- [ ] Password reset functionality
-- [ ] Enhanced search and filtering
-- [ ] Export reports to PDF/Excel
+### Versi 1.1.0 (Direncanakan) 🚧
+- [ ] Implementasi refresh token
+- [ ] Verifikasi email
+- [ ] Fungsi reset password
+- [ ] Pencarian dan filter yang ditingkatkan
+- [ ] Export laporan ke PDF/Excel
 
-### Version 2.0.0 (Future) 🔮
-- [ ] Real-time match updates (WebSocket)
-- [ ] Admin dashboard web interface
-- [ ] Multi-language support
-- [ ] Advanced analytics and statistics
-- [ ] Mobile app integration
-- [ ] Social media integration
+### Versi 2.0.0 (Masa Depan) 🔮
+- [ ] Update pertandingan real-time (WebSocket)
+- [ ] Interface web dashboard admin
+- [ ] Dukungan multi-bahasa
+- [ ] Analitik dan statistik lanjutan
+- [ ] Integrasi aplikasi mobile
+- [ ] Integrasi media sosial
 
 ---
 
-## 📊 Project Status
+## 📊 Status Project
 
 ![Status](https://img.shields.io/badge/Status-Active-success?style=for-the-badge)
 ![Build](https://img.shields.io/badge/Build-Passing-success?style=for-the-badge)
@@ -1012,5 +873,34 @@ We welcome feature requests! Please [open an issue](https://github.com/alwijein/
 ![Version](https://img.shields.io/badge/Version-1.0.0-blue?style=for-the-badge)
 
 **Current Version:** 1.0.0  
-**Last Updated:** October 2024  
-**Status:** Production Ready ✅
+**Terakhir Update:** October 2024  
+**Status:** Siap Production ✅
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
